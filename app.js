@@ -52,30 +52,38 @@ document.addEventListener('DOMContentLoaded' ,()=>{
 
     //create board
     function createBoard(){
+
+       // const grid= document.querySelector('.grid');
+
+
         for(let i=0;i<cardArray.length; i++){
             const card =document.createElement('img');
+            card.setAttribute('class','objCard');
             card.setAttribute('src','/images/blank.png');
             card.setAttribute('data-id',i);
             card.addEventListener('click',flipCard);
             grid.appendChild(card);
 
 
-            var botonreinicio= document.getElementById('boton');
 
-
-            //oton.hidden=false;
-
-            botonreinicio.onclick = function(){ reset()}
 
             //window.document='index.html';
-
-
 
         }
     }
 
     function reset(){
         console.log("aea");
+        let cards = document.querySelectorAll('.objCard').forEach(el => el.remove());
+
+        cardArray.sort(()=>0.5-Math.random());
+
+        resultDisplay.textContent = 0;
+        cardsChosen=[];
+        cardsChosenId=[];
+        cardsWon=[];
+
+
         createBoard();
 
     }
@@ -112,7 +120,12 @@ document.addEventListener('DOMContentLoaded' ,()=>{
         if (cardsWon.length === cardArray.length /2){
             resultDisplay.textContent =' GANASTE!!';
 
+            var botonreinicio= document.getElementById('boton');
 
+
+            botonreinicio.hidden=false;
+
+            botonreinicio.onclick = function(){ reset()}
 
 
         }
