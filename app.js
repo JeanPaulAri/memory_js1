@@ -48,6 +48,8 @@ document.addEventListener('DOMContentLoaded' ,()=>{
     let cardsChosenId=[];
     let cardsWon=[];
 
+
+
     //create board
     function createBoard(){
         for(let i=0;i<cardArray.length; i++){
@@ -57,7 +59,25 @@ document.addEventListener('DOMContentLoaded' ,()=>{
             card.addEventListener('click',flipCard);
             grid.appendChild(card);
 
+
+            var botonreinicio= document.getElementById('boton');
+
+
+            //oton.hidden=false;
+
+            botonreinicio.onclick = function(){ reset()}
+
+            //window.document='index.html';
+
+
+
         }
+    }
+
+    function reset(){
+        console.log("aea");
+        createBoard();
+
     }
 
     function checkForMatch(){
@@ -90,7 +110,11 @@ document.addEventListener('DOMContentLoaded' ,()=>{
         cardsChosenId=[]
         resultDisplay.textContent=cardsWon.length;
         if (cardsWon.length === cardArray.length /2){
-            resultDisplay.textContent =' AVISO: ENCONTRASTE TODAS LAS CARTAS, GANASTE!!';
+            resultDisplay.textContent =' GANASTE!!';
+
+
+
+
         }
     }
 
